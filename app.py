@@ -2,6 +2,7 @@ from flask import Flask, render_template, request, jsonify, redirect, url_for
 from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime
 import json
+import os
 
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///database/mental_health.db'
@@ -124,4 +125,5 @@ def get_logs():
     return jsonify(log_list)
 
 if __name__ == '__main__':
-    app.run(debug=True) 
+    port = int(os.environ.get('PORT', 10000))  # Render provides the PORT env variable
+    app.run(host='0.0.0.0', port=port, debug=True) 
