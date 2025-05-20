@@ -26,7 +26,7 @@
             <input type="hidden" name="date" id="date">
             <section class="card mb-4 p-4 shadow-sm border-0 rounded-4">
                 <h2 class="mb-2" style="font-weight:700;">Today's Mental Check-In</h2>
-                <p class="mb-3 text-muted">How are you feeling today?<br><span style="font-size:0.95em;">Rate from 1 to 10 (10 being excellent)</span></p>
+                <p class="mb-3 text-muted accent-label">How are you feeling today?<br><span style="font-size:0.95em;">Rate from 1 to 10 (10 being excellent)</span></p>
                 <div class="row g-4 align-items-center">
                     <div class="col-md-6">
                         <label class="fw-bold mb-1">Overall Feeling</label>
@@ -72,7 +72,7 @@
             </section>
             <section class="card mb-4 p-4 shadow-sm border-0 rounded-4">
                 <h3 class="fw-bold mb-2">Daily Actions</h3>
-                <p class="text-muted mb-3">Check all that apply today</p>
+                <p class="text-muted mb-3 accent-label">Check all that apply today</p>
                 <div class="row">
                     <div class="col-md-6">
                         <div class="form-check mb-2">
@@ -126,9 +126,9 @@
             </section>
             <section class="card mb-4 p-4 shadow-sm border-0 rounded-4">
                 <h3 class="fw-bold mb-2">Notes</h3>
-                <textarea class="form-control" name="notes" id="notes" rows="3" placeholder="Any additional notes about your day..."></textarea>
+                <textarea class="form-control" name="notes" id="notes" rows="3" placeholder="Reflect, vent or celebrate something from today"></textarea>
             </section>
-            <button type="submit" class="btn btn-primary btn-lg w-100" style="font-weight:600;">Save Daily Log</button>
+            <button id="save-log-btn" type="submit" class="btn btn-primary btn-lg w-100" style="font-weight:600;">Save Daily Log</button>
         </form>
     </main>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
@@ -173,6 +173,11 @@
         }
         courageCheckbox.addEventListener('change', updateCourageStar);
         updateCourageStar();
+        // Change button text after submit
+        var saveBtn = document.getElementById('save-log-btn');
+        document.querySelector('form').addEventListener('submit', function(e) {
+            saveBtn.textContent = 'Nice work staying aware today.';
+        });
     </script>
 </body>
 </html> 
