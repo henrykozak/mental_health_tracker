@@ -19,14 +19,15 @@ body {
 }
 
 .nav-link {
-    color: #F9FAFB !important;
+    color: #A259FF !important;
     font-weight: 600;
     font-size: 1.1rem;
     margin-left: 1.5rem;
+    transition: color 0.2s;
 }
 
 .nav-link.active, .nav-link:hover {
-    color: #A259FF !important;
+    color: #5FFBF1 !important;
 }
 
 main.container {
@@ -43,7 +44,7 @@ main.container {
 }
 
 h2, h3 {
-    color: #A259FF;
+    color: #fff;
     font-weight: 700;
 }
 
