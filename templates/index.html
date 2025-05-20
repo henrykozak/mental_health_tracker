@@ -156,6 +156,19 @@
             slider.addEventListener('input', update);
             update();
         });
+        // Star icon for Displayed Courage
+        var courageCheckbox = document.getElementById('displayed_courage');
+        function updateCourageStar() {
+            if (courageCheckbox.checked) {
+                courageCheckbox.classList.add('star-checked');
+                courageCheckbox.classList.remove('star-unchecked');
+            } else {
+                courageCheckbox.classList.remove('star-checked');
+                courageCheckbox.classList.add('star-unchecked');
+            }
+        }
+        courageCheckbox.addEventListener('change', updateCourageStar);
+        updateCourageStar();
     </script>
 </body>
 </html> 
