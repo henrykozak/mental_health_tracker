@@ -31,7 +31,7 @@
                     <div class="col-md-6">
                         <label class="fw-bold mb-1">Overall Feeling</label>
                         <div class="d-flex align-items-center mb-2">
-                            <span id="emoji-overall_feeling" class="me-2" style="font-size:1.5rem;">😐</span>
+                            <span id="emoji-overall_feeling" class="emoji-pulse me-2" style="font-size:1.5rem;"><span>😐</span></span>
                             <input type="range" class="form-range flex-grow-1 mx-2" min="1" max="10" id="overall_feeling" name="overall_feeling" required>
                             <span id="value-overall_feeling" class="ms-2 fw-bold">6</span>
                         </div>
@@ -39,7 +39,7 @@
                     <div class="col-md-6">
                         <label class="fw-bold mb-1">Self Confidence</label>
                         <div class="d-flex align-items-center mb-2">
-                            <span id="emoji-self_confidence" class="me-2" style="font-size:1.5rem;">😐</span>
+                            <span id="emoji-self_confidence" class="emoji-pulse me-2" style="font-size:1.5rem;"><span>😐</span></span>
                             <input type="range" class="form-range flex-grow-1 mx-2" min="1" max="10" id="self_confidence" name="self_confidence" required>
                             <span id="value-self_confidence" class="ms-2 fw-bold">6</span>
                         </div>
@@ -47,7 +47,7 @@
                     <div class="col-md-6">
                         <label class="fw-bold mb-1">Self Worth</label>
                         <div class="d-flex align-items-center mb-2">
-                            <span id="emoji-self_worth" class="me-2" style="font-size:1.5rem;">😐</span>
+                            <span id="emoji-self_worth" class="emoji-pulse me-2" style="font-size:1.5rem;"><span>😐</span></span>
                             <input type="range" class="form-range flex-grow-1 mx-2" min="1" max="10" id="self_worth" name="self_worth" required>
                             <span id="value-self_worth" class="ms-2 fw-bold">6</span>
                         </div>
@@ -55,7 +55,7 @@
                     <div class="col-md-6">
                         <label class="fw-bold mb-1">Energy Levels</label>
                         <div class="d-flex align-items-center mb-2">
-                            <span id="emoji-energy_levels" class="me-2" style="font-size:1.5rem;">😐</span>
+                            <span id="emoji-energy_levels" class="emoji-pulse me-2" style="font-size:1.5rem;"><span>😐</span></span>
                             <input type="range" class="form-range flex-grow-1 mx-2" min="1" max="10" id="energy_levels" name="energy_levels" required>
                             <span id="value-energy_levels" class="ms-2 fw-bold">6</span>
                         </div>
@@ -63,7 +63,7 @@
                     <div class="col-md-6">
                         <label class="fw-bold mb-1">Physical Wellness</label>
                         <div class="d-flex align-items-center mb-2">
-                            <span id="emoji-physical_wellness" class="me-2" style="font-size:1.5rem;">😐</span>
+                            <span id="emoji-physical_wellness" class="emoji-pulse me-2" style="font-size:1.5rem;"><span>😐</span></span>
                             <input type="range" class="form-range flex-grow-1 mx-2" min="1" max="10" id="physical_wellness" name="physical_wellness" required>
                             <span id="value-physical_wellness" class="ms-2 fw-bold">6</span>
                         </div>
@@ -144,7 +144,14 @@
             var emojiSpan = document.getElementById('emoji-' + id);
             function update() {
                 valueSpan.textContent = slider.value;
-                emojiSpan.textContent = getEmoji(Number(slider.value));
+                var emoji = getEmoji(Number(slider.value));
+                emojiSpan.querySelector('span').textContent = emoji;
+                // Add pulse for positive values (6 or above)
+                if (Number(slider.value) >= 6) {
+                    emojiSpan.classList.add('positive');
+                } else {
+                    emojiSpan.classList.remove('positive');
+                }
             }
             slider.addEventListener('input', update);
             update();
